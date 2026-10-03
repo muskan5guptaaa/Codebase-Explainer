@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #0a6e6e;
+  --color-accent-soft: #e6f4f4;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+/* Markdown rendered from the model */
+.prose-md p { @apply mb-3 leading-relaxed text-slate-700; }
+.prose-md p:last-child { @apply mb-0; }
+.prose-md ul { @apply mb-3 list-disc space-y-1 pl-5 text-slate-700; }
+.prose-md ol { @apply mb-3 list-decimal space-y-1 pl-5 text-slate-700; }
+.prose-md code { @apply rounded bg-slate-100 px-1 py-0.5 font-mono text-[0.85em] text-teal-800; }
+.prose-md pre { @apply mb-3 overflow-x-auto rounded-md bg-slate-900 p-3 text-slate-100; }
+.prose-md pre code { @apply bg-transparent p-0 text-slate-100; }
+.prose-md strong { @apply font-semibold text-slate-900; }
+.prose-md a { @apply text-teal-700 underline; }
+.prose-md a:has(> code) { @apply no-underline; }
+.prose-md a > code { @apply hover:bg-accent-soft hover:underline; }
+
+/* Export → Save as PDF */
+@media print {
+  @page { margin: 16mm; }
+  body { @apply bg-white; }
+  .prose-md pre { @apply whitespace-pre-wrap; }
+}
